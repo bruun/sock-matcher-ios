@@ -11,6 +11,7 @@ import Foundation
 class User {
     
     var id : String?
+    var username : String?
     var name : String?
     var socks : [Sock] = []
 }

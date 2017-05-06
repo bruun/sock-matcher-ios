@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class Sock {
-    
+    var id : Int?
     var title : String?
     var location : String?
-    var image : UIImage?
+    var imageUrl : String?
     var user : User?
 }

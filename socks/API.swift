@@ -13,46 +13,92 @@ class API {
     
     static var currentUser : User?
     static var currentSock : Sock?
+    static var didWin = false
     
-    static func login(username: String, completion: () -> Void) {
+    static func login(username: String, completion: @escaping () -> Void) {
         let user = User()
         user.id = "id"
         user.name = "Thomas"
+        user.username = username
         currentUser = user
         completion()
     }
     
-    static func getOwnSocks(completion: (_ socks : [Sock]) -> Void) {
-        let sock1 = Sock()
-        sock1.title = "Lonely sock"
-        sock1.image = #imageLiteral(resourceName: "SockExample")
-        let sock2 = Sock()
-        sock2.title = "Sock there"
-        sock2.image = #imageLiteral(resourceName: "SockExample")
-        let sock3 = Sock()
-        sock3.title = "Sock everywhere"
-        sock3.image = #imageLiteral(resourceName: "SockExample")
-        let socks = [sock1, sock2, sock3]
+    static func getAuthHeaders() -> HTTPHeaders {
+        var headers: HTTPHeaders = [:]
+        if let authorizationHeader = Request.authorizationHeader(user: currentUser!.username!, password: "lol") {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        return headers
+    }
+    
+    static func getOwnSocks(completion: @escaping (_ socks : [Sock]) -> Void) {
+        Alamofire.request("http://localhost:8000/socks/mine/", headers: getAuthHeaders())
+            .responseJSON { response in
+                
+                let sockJsonArray = response.result.value as! Array<Dictionary<String, Any>>
+                let socks = sockJsonArray.map({ (obj : Dictionary) -> Sock in
+                    let sock = Sock()
+                    sock.id = obj["id"] as? Int
+                    sock.title = obj["name"] as? String
+                    sock.imageUrl = obj["image"] as? String
+                    return sock
+                })
+                
+                currentUser?.socks = []
+                completion(socks)
+        }
+    }
+    
+    static func getSocksToMatch(completion: @escaping (_ socks : [Sock]) -> Void) {
+        Alamofire.request("http://localhost:8000/socks/", headers: getAuthHeaders())
+            .responseJSON { response in
+                
+                let sockJsonArray = response.result.value as! Array<Dictionary<String, Any>>
+                let socks = sockJsonArray.map({ (obj : Dictionary) -> Sock in
+                    let sock = Sock()
+                    sock.id = obj["id"] as? Int
+                    sock.title = obj["name"] as? String
+                    sock.imageUrl = obj["image"] as? String
+                    return sock
+                })
 
-        currentUser?.socks = []
-        completion(socks)
+                completion(socks)
+        }
     }
     
-    static func getSocksToMatch(completion: (_ socks : [Sock]) -> Void) {
-        let sock1 = Sock()
-        sock1.title = "I'm a lonely sock"
-        sock1.image = #imageLiteral(resourceName: "SockExample")
-        let sock2 = Sock()
-        sock2.title = "Looking to rock your socks on"
-        sock2.image = #imageLiteral(resourceName: "SockExample")
-        let sock3 = Sock()
-        sock3.title = "Sock looking for a soulmate"
-        sock3.image = #imageLiteral(resourceName: "SockExample")
-        let socks = [sock1, sock2, sock3]
-        completion(socks)
+    static func matchSock(sock:Sock, completion: @escaping (_ didMatch: Bool) -> Void) {
+        let parameters : [String: Any] = [
+            "target_sock": sock.id!,
+            "preference": 1
+        ]
+        Alamofire.request("http://localhost:8000/socks/\(currentSock!.id!)/preferences/", method: .post, parameters: parameters, headers: getAuthHeaders())
+            .responseJSON { response in
+                let resultDict = response.result.value as! Dictionary<String, Any>
+                guard let isMatch = resultDict["is_match"] else {
+                    completion(false)
+                    return
+                }
+                completion(isMatch as! Bool)        }
     }
     
-    static func matchSock(sock:Sock, completion: (_ didMatch: Bool) -> Void) {
-        completion(true)
+    static func rejectSock(sock:Sock, completion: @escaping () -> Void) {
+        let parameters : [String: Any] = [
+            "target_sock": sock.id!,
+            "preference": 2
+        ]
+        Alamofire.request("http://localhost:8000/socks/\(currentSock!.id!)/preferences/", method: .post, parameters: parameters, headers: getAuthHeaders())
+            .responseJSON { response in
+                completion()
+        }
+    }
+    
+    static func getMatch(sock : Sock, completion: @escaping () -> Void) {
+        Alamofire.request("http://localhost:8000/socks/\(currentSock!.id!)/match/", headers: getAuthHeaders())
+            .responseJSON { response in
+                let winnerSockId = ((response.result.value as! Dictionary<String, Any>)["winner_sock"] as! Dictionary<String, Any>)["id"] as! Int
+                didWin = winnerSockId == currentSock?.id
+                completion()
+        }
     }
 }

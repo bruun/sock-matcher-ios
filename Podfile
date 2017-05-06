@@ -5,4 +5,5 @@ use_frameworks!
 target 'socks' do
     pod 'Alamofire', '~> 4.4'
     pod 'DMSwipeCards'
+    pod 'Kingfisher', '~> 3.0'
 end

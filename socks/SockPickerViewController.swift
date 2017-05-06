@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 class SockPickerViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     let reuseIdentifier = "sockCell"
@@ -17,7 +18,7 @@ class SockPickerViewController : UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         API.getOwnSocks { (socks : [Sock]) in
             self.socks = socks
-            sockCollection?.reloadData()
+            self.sockCollection?.reloadData()
         }
     }
     
@@ -41,7 +42,7 @@ class SockPickerViewController : UIViewController, UICollectionViewDelegate, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SockCell
         let sock = socks[indexPath.row]
         cell.label?.text = sock.title
-        cell.imageView?.image = sock.image
+        cell.imageView?.kf.setImage(with: URL(string: sock.imageUrl!))
         return cell
     }
     

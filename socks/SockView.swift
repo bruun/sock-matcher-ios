@@ -12,7 +12,7 @@ import UIKit
 class SockView : UIView {
     var sock : Sock? {
         didSet {
-            self.imageView?.image = sock?.image
+            self.imageView?.kf.setImage(with: URL(string: sock!.imageUrl!))
             self.label?.text = sock?.title
         }
     }

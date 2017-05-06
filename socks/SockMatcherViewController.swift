@@ -30,7 +30,7 @@ class SockMatcherViewController : UIViewController, DMSwipeCardsViewDelegate {
             label.layer.cornerRadius = label.frame.width / 2
             label.backgroundColor = mode == .left ? UIColor.red : UIColor.green
             label.clipsToBounds = true
-            label.text = mode == .left ? "👍" : "👎"
+            label.text = mode == .left ? "👎" : "👍"
             label.font = UIFont.systemFont(ofSize: 24)
             label.textAlignment = .center
             return label
@@ -53,14 +53,20 @@ class SockMatcherViewController : UIViewController, DMSwipeCardsViewDelegate {
     
     func swipedLeft(_ object: Any) {
         // Rejected the sock
+        API.rejectSock(sock: object as! Sock) { () in
+            
+        }
     }
     
     func swipedRight(_ object: Any) {
-        API.matchSock(sock: object as! Sock) { (didMatch : Bool) in
+        let sock = object as! Sock
+        API.matchSock(sock: sock) { (didMatch : Bool) in
             if (didMatch) {
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "MatcherToMatch", sender: self)
-                }
+                API.getMatch(sock: sock, completion: {
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "MatcherToMatch", sender: self)
+                    }
+                })
             }
         }
     }
