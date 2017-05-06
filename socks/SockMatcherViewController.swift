@@ -12,7 +12,8 @@ import DMSwipeCards
 
 class SockMatcherViewController : UIViewController, DMSwipeCardsViewDelegate {
     
-    var swipeView: DMSwipeCardsView<Sock>!
+    var swipeView : DMSwipeCardsView<Sock>!
+    @IBOutlet weak var emptyLabel : UILabel?
     
     override func viewDidLoad() {
      
@@ -78,6 +79,6 @@ class SockMatcherViewController : UIViewController, DMSwipeCardsViewDelegate {
     }
     
     func reachedEndOfStack() {
-        // TODO: Show some sort of friendly empty state
+        emptyLabel?.isHidden = false
     }
 }

@@ -15,30 +15,41 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6BP-al-1tq">
-                    <rect key="frame" x="91" y="366" width="192" height="169"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6BP-al-1tq">
+                    <rect key="frame" x="90.5" y="336" width="193" height="199"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFY-lZ-Daq">
-                    <rect key="frame" x="66" y="20" width="242" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFY-lZ-Daq">
+                    <rect key="frame" x="166" y="20" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puO-lW-8pM">
-                    <rect key="frame" x="168" y="316" width="39" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puO-lW-8pM">
+                    <rect key="frame" x="176" y="276.5" width="23" height="44.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="37"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uvu-yW-Cgw">
-                    <rect key="frame" x="91" y="107" width="192" height="193"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uvu-yW-Cgw">
+                    <rect key="frame" x="91" y="61" width="193" height="199.5"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="6BP-al-1tq" secondAttribute="bottom" constant="132" id="3mi-Dg-wCc"/>
+                <constraint firstItem="6BP-al-1tq" firstAttribute="height" secondItem="Uvu-yW-Cgw" secondAttribute="height" id="5dy-PQ-fUz"/>
+                <constraint firstItem="Uvu-yW-Cgw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="91" id="5nJ-Ly-1vx"/>
+                <constraint firstItem="6BP-al-1tq" firstAttribute="width" secondItem="Uvu-yW-Cgw" secondAttribute="width" id="Aro-F9-TIv"/>
+                <constraint firstItem="Uvu-yW-Cgw" firstAttribute="top" secondItem="DFY-lZ-Daq" secondAttribute="bottom" constant="20" id="BC0-Xu-HCp"/>
+                <constraint firstItem="DFY-lZ-Daq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QBB-zc-RLi"/>
+                <constraint firstItem="Uvu-yW-Cgw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="U6D-he-imc"/>
+                <constraint firstItem="6BP-al-1tq" firstAttribute="top" secondItem="puO-lW-8pM" secondAttribute="bottom" constant="15" id="YJb-78-0zd"/>
+                <constraint firstAttribute="trailing" secondItem="Uvu-yW-Cgw" secondAttribute="trailing" constant="91" id="aVu-uH-wpv"/>
+                <constraint firstItem="puO-lW-8pM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="d29-iO-c2j"/>
+                <constraint firstItem="DFY-lZ-Daq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="l5X-Jf-59r"/>
+                <constraint firstItem="6BP-al-1tq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uc4-QE-txP"/>
+                <constraint firstItem="puO-lW-8pM" firstAttribute="top" secondItem="Uvu-yW-Cgw" secondAttribute="bottom" constant="16" id="ut6-KR-JqE"/>
+            </constraints>
             <connections>
                 <outlet property="label" destination="DFY-lZ-Daq" id="l0g-CD-mPN"/>
                 <outlet property="mySockImageView" destination="6BP-al-1tq" id="p67-Vm-k2T"/>
