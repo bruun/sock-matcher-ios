@@ -10,15 +10,22 @@ import Foundation
 import UIKit
 
 class SockView : UIView {
-    var sock : Sock? {
+    var otherSock : Sock? {
         didSet {
-            self.imageView?.kf.setImage(with: URL(string: sock!.imageUrl!))
-            self.label?.text = sock?.title
+            self.otherSockImageView?.kf.setImage(with: URL(string: otherSock!.imageUrl!))
+            self.label?.text = otherSock?.title
+        }
+    }
+    
+    var mySock : Sock? {
+        didSet {
+            self.mySockImageView?.kf.setImage(with: URL(string: mySock!.imageUrl!))
         }
     }
     
     @IBOutlet weak var label : UILabel?
-    @IBOutlet weak var imageView : UIImageView?
+    @IBOutlet weak var otherSockImageView : UIImageView?
+    @IBOutlet weak var mySockImageView : UIImageView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

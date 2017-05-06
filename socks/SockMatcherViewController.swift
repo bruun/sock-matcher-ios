@@ -19,7 +19,9 @@ class SockMatcherViewController : UIViewController, DMSwipeCardsViewDelegate {
         let viewGenerator: (Sock, CGRect) -> (UIView) = { (element: Sock, frame: CGRect) -> (UIView) in
             let container = SockView.instanceFromNib()
             container.frame = CGRect(x: 30, y: 20, width: frame.width - 60, height: frame.height - 40)
-            container.sock = element    
+            container.otherSock = element
+            container.mySock = API.currentSock
+            
             return container
         }
         
