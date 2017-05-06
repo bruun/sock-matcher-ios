@@ -13,7 +13,8 @@ import DMSwipeCards
 class SockMatcherViewController : UIViewController, DMSwipeCardsViewDelegate {
     
     var swipeView : DMSwipeCardsView<Sock>!
-    @IBOutlet weak var emptyLabel : UILabel?
+    @IBOutlet weak var emptyTextLabel : UILabel?
+    @IBOutlet weak var emptyEmojiLabel : UILabel?
     
     override func viewDidLoad() {
      
@@ -55,10 +56,7 @@ class SockMatcherViewController : UIViewController, DMSwipeCardsViewDelegate {
     }
     
     func swipedLeft(_ object: Any) {
-        // Rejected the sock
-        API.rejectSock(sock: object as! Sock) { () in
-            
-        }
+        API.rejectSock(sock: object as! Sock) { () in }
     }
     
     func swipedRight(_ object: Any) {
@@ -79,6 +77,7 @@ class SockMatcherViewController : UIViewController, DMSwipeCardsViewDelegate {
     }
     
     func reachedEndOfStack() {
-        emptyLabel?.isHidden = false
+        emptyTextLabel?.isHidden = false
+        emptyEmojiLabel?.isHidden = false
     }
 }

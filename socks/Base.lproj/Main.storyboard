@@ -148,7 +148,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emptyLabel" destination="69v-rR-XUU" id="RIG-LV-vN0"/>
+                        <outlet property="emptyEmojiLabel" destination="OTF-cb-frM" id="sZj-LS-0UQ"/>
+                        <outlet property="emptyTextLabel" destination="69v-rR-XUU" id="NNX-W1-BaI"/>
                         <segue destination="59O-ZN-2Zj" kind="presentation" identifier="MatcherToMatch" id="s1J-qP-Fm5"/>
                     </connections>
                 </viewController>
