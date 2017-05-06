@@ -15,18 +15,19 @@ class API {
     static var currentSock : Sock?
     static var didWin = false
     
-    static func login(username: String, completion: @escaping () -> Void) {
+    static func login(username: String, password: String, completion: @escaping () -> Void) {
         let user = User()
         user.id = "id"
         user.name = "Thomas"
         user.username = username
+        user.password = password
         currentUser = user
         completion()
     }
     
     static func getAuthHeaders() -> HTTPHeaders {
         var headers: HTTPHeaders = [:]
-        if let authorizationHeader = Request.authorizationHeader(user: currentUser!.username!, password: "lol") {
+        if let authorizationHeader = Request.authorizationHeader(user: currentUser!.username!, password: currentUser!.password!) {
             headers[authorizationHeader.key] = authorizationHeader.value
         }
         return headers
