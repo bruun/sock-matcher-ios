@@ -6,9 +6,26 @@
 //  Copyright © 2017 Socks Inc. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class LoginViewController : UIViewController {
+class LoginViewController: UIViewController {
+    @IBOutlet weak var usernameInput : UITextField?
+    @IBOutlet weak var passwordInput : UITextField?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
+    @IBAction func performLogin(sender: AnyObject) {
+        if (self.usernameInput?.text?.characters.count == 0 ||
+            self.passwordInput?.text?.characters.count == 0) {
+            return
+        }
+    
+        API.login(username: usernameInput!.text!, password: passwordInput!.text!) {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "LoginToSockPicker", sender: sender)
+            }
+        }
+    }
 }
