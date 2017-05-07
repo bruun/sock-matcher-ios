@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9992FF01EBEA25C005751B5 /* SwipeOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9992FEF1EBEA25C005751B5 /* SwipeOverlayView.swift */; };
 		A9C236091EBDD79C00F0C552 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C236081EBDD79C00F0C552 /* AppDelegate.swift */; };
 		A9C2360B1EBDD79C00F0C552 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2360A1EBDD79C00F0C552 /* LoginViewController.swift */; };
 		A9C2360E1EBDD79C00F0C552 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9C2360C1EBDD79C00F0C552 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		61010EFE15BE951DB7EAC2C0 /* Pods_socks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_socks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9992FEF1EBEA25C005751B5 /* SwipeOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeOverlayView.swift; sourceTree = "<group>"; };
 		A9C236051EBDD79C00F0C552 /* socks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9C236081EBDD79C00F0C552 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9C2360A1EBDD79C00F0C552 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				A9C236441EBDF96F00F0C552 /* SockView.xib */,
 				A9C236421EBDF78000F0C552 /* SockView.swift */,
 				A9C2364A1EBE0F9200F0C552 /* SockCell.swift */,
+				A9992FEF1EBEA25C005751B5 /* SwipeOverlayView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				A9C236371EBDDA9100F0C552 /* API.swift in Sources */,
 				A9C236431EBDF78000F0C552 /* SockView.swift in Sources */,
 				A9C236491EBE08F600F0C552 /* SockPickerViewController.swift in Sources */,
+				A9992FF01EBEA25C005751B5 /* SwipeOverlayView.swift in Sources */,
 				A9C2364D1EBE14DF00F0C552 /* SockMatchViewController.swift in Sources */,
 				A9C236091EBDD79C00F0C552 /* AppDelegate.swift in Sources */,
 			);

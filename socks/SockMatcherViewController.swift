@@ -28,16 +28,10 @@ class SockMatcherViewController : UIViewController, DMSwipeCardsViewDelegate {
         }
         
         let overlayGenerator: (SwipeMode, CGRect) -> (UIView) = { (mode: SwipeMode, frame: CGRect) -> (UIView) in
-            let label = UILabel()
-            label.frame.size = CGSize(width: 100, height: 100)
-            label.center = CGPoint(x: frame.width / 2, y: frame.height / 2)
-            label.layer.cornerRadius = label.frame.width / 2
-            label.backgroundColor = mode == .left ? UIColor.red : UIColor.green
-            label.clipsToBounds = true
-            label.text = mode == .left ? "👎" : "👍"
-            label.font = UIFont.systemFont(ofSize: 24)
-            label.textAlignment = .center
-            return label
+            let overlay = SwipeOverlayView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+            overlay.center = CGPoint(x: frame.width / 2, y: frame.height / 2)
+            overlay.mode = mode
+            return overlay
         }
         
         let frame = CGRect(x: 0, y: 80, width: self.view.frame.width, height: self.view.frame.height - 160)
